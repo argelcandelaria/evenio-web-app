@@ -1,0 +1,43 @@
+
+<div class="hidden" [innerHTML]="artboardScaleStyle | safe: 'html'"></div>
+<div class="hero visible-min-sm-block"></div>
+<modal>
+  <div class="content-body"> 
+    <div class="modal-title">{{ "Do you want to save the changes made?" | translate }}</div>
+    <p>{{ "Your changes will be lost if you don’t save them." | translate }}</p>
+  </div>
+  <div class="content-footer">
+    <button class="btn btn-default" type="button" (click)="modal.hide()"> {{ "cancel" | translate | titleize }}</button>
+    <div class="flex-1">       </div>
+    <button class="btn btn-default" type="button" (click)="this.guard = false" routerLink="/"> {{ "don't save" | translate | titleize }}</button>
+    <button class="btn btn-go" type="button" (click)="finalize()"> {{ "save" | translate | titleize }} ...</button>
+  </div>
+</modal>
+<div class="editor-container">
+  <div class="editor-content">
+    <div class="loading alert alert-info" [ngClass]="{'loading-still': somethingIsLoading}">
+      <div class="loader loader-info loader-sm"></div><span>Loading materials ...</span>
+    </div>
+    <div id="artboardContainer" artboardContainer="" (init)="alert('tom')" [innerHTML]="artboard.output | safe: 'html'"></div>
+  </div>
+  <div class="editor-sidebar">
+    <div class="editor-tools">
+      <div>
+        <browser-support></browser-support>
+      </div>
+      <div class="form-group" *ngFor="let designProperty of designPropertiesArray">
+        <label *ngIf="designProperty.label">{{ designProperty.label[translate.currentLang] }}</label>
+        <textarea class="form-control" *ngIf="designProperty.input === 'text'" type="text" [attr.designPropertyBinder]="designProperty._objectKey" (input)="onInputChange($event); textareaFitter($event.target)">{{ textareaProcess(designProperty) }}</textarea>
+        <input *ngIf="designProperty.input === 'range'" type="range" [attr.designPropertyBinder]="designProperty._objectKey" [attr.min]="designProperty.min" [attr.max]="designProperty.max" [attr.step]="designProperty.step" [attr.value]="designProperty.value" (input)="onInputChange($event)"/>
+        <input *ngIf="designProperty.input === 'image'" type="file" accept="image/*" [attr.designPropertyBinder]="designProperty._objectKey" (change)="onFileChange($event)"/>
+        <hr *ngIf="designProperty.input === 'separator'"/>
+      </div>
+      <div *ngIf="resultSrc"><img id="resultSVG" [attr.src]="resultSrc | safe: 'url'"/></div>
+    </div>
+    <div class="editor-actions">
+      <button class="btn btn-default" type="button" routerLink="/">{{ "discard" | translate | titleize }}</button>
+      <div class="separator"></div>
+      <button class="btn btn-go" type="button" (click)="finalize()">{{ "save" | translate | titleize }}</button>
+    </div>
+  </div>
+</div>

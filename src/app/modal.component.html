@@ -1,0 +1,13 @@
+
+<div class="modal fade" (click)="hide()" tabindex="-1" [ngClass]="{'in': visibleAnimate}" [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+  <div class="modal-dialog" (click)="$event.stopPropagation();">
+    <div class="modal-content">
+      <div class="modal-body">
+        <ng-content select=".content-body"></ng-content>
+      </div>
+      <div class="modal-footer">
+        <ng-content select=".content-footer"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

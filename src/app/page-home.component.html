@@ -1,0 +1,42 @@
+<div class="hero">
+  <div class="container">
+    <h1>{{ "Event Recording Application Tool" | translate | titleize }}</h1>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <div class="row">
+      <div class="col-xs-12">
+        <browser-support></browser-support>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!packs">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">Loading...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="pack-text"></p>
+  <div *ngFor="let pack of packs">
+    <div class="row pack-heading">
+      <div class="col-xs-12">
+        <h2 class="pack-title">{{ pack.title[translate.currentLang] }}</h2>
+        <p></p>
+        <p class="pack-description">{{ pack.description[translate.currentLang] }}</p>
+      </div>
+    </div>
+    <div class="row pack-content">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let design of pack.designs">
+        <div class="panel panel-design">
+          <div class="panel-heading">{{ design.title[translate.currentLang] }}</div>
+          <div class="panel-body"><img class="img-responsive" [attr.src]="getDesignThumbnail(pack.packID, design.designID)" [routerLink]="['/editor', pack.packID, design.designID]" (error)="$event.target.src = '/assets/no-preview.svg'"/></div>
+          <div class="panel-footer"><a class="btn btn-go btn-block" [routerLink]="['/editor', pack.packID, design.designID]"> {{ "choose this design" | translate | titleize }}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

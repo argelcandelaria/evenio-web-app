@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/root.component.scss"],"names":[],"mappings":"AAAA;EACI,kBAAiB;EACjB,cAAa;EACb,uBAAsB,EACzB;;AAED;EACI,eAAc,EACjB","file":"../../app/root.component.css","sourcesContent":[":host {\r\n    min-height: 100vh;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.p-footer {\r\n    color: #586069;\r\n}"]}

@@ -1,0 +1,29 @@
+.pack-title {
+  font-size: 32px;
+  color: #4edf70;
+  font-weight: bold;
+  margin-bottom: 5px; }
+
+.pack-text {
+    font-size: 32px;
+    color:#1f9aff;
+    font-weight: bold;
+    margin-bottom: 5px; }
+
+.pack-description {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255); }
+
+.pack-heading {
+  margin-bottom: 15px; }
+
+.pack-content {
+  margin-bottom: 30px; }
+
+.img-responsive {
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+/*# sourceMappingURL=../maps/app/page-home.component.css.map */

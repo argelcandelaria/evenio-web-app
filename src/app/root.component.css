@@ -1,0 +1,9 @@
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; }
+
+.p-footer {
+  color: #fff; }
+
+/*# sourceMappingURL=../maps/app/root.component.css.map */
